@@ -32,6 +32,8 @@ Follow this image for reference:
 * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
 * The 100KΩ resistor goes between 3V and the thermistor, as in this image:
 ![thermistor][img2]
+* You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V.
+![voltage regulator][img3]
 
 ## Setup the code
 \#todo
@@ -60,3 +62,4 @@ set up the temperatures, max and min PWM, curve shape
 
 [img1]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/breadboard%20schematic.jpg?raw=true
 [img2]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/thermistor%20wiring.jpg?raw=true
+[img3]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/voltage%20regulator.jpg?raw=true
