@@ -36,7 +36,7 @@ Follow this image for reference:
 * The PWM pin in the fan is NOT the one next to the power wires! Put it in the correct position or you'll fry the ESP32!
 * By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25.
 * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
-* The 100KΩ resistor goes between 3V and the thermistor, as in this image:
+* The 100KΩ resistor goes between 3V3 and the thermistor, as in this image:
 ![thermistor][img2]
 * You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one :)
 ![voltage regulator][img3]
