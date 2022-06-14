@@ -23,7 +23,8 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 * download pwm_fan_control.ino from its folder and open it with the arduino IDE
 * if you don't know how to flash to the ESP32 from Arduino IDE, follow [this][link6] tutorial to get started!
 * Wire everything up
-* set up the code 
+* set up the code and flash it to the ESP32
+* you're done!
 
 ## Wiring
 Wiring everything up is fairly easy, as you can usually do everything on one side of the ESP32. Again, make sure to [check the pinout of your board][link4], as some have the 3V3 output on the other side!
@@ -42,7 +43,7 @@ Follow this image for reference:
 ## Setup the code
 \#todo
 define the correct pins
-calibrate thermistor (website reference)
+calibrate thermistor (website reference). Decomment #define DEBUG!!
 set up the temperatures, max and min PWM, curve shape
 
 ``` arduino
