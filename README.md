@@ -33,7 +33,7 @@ Follow this image for reference:
 ![Breadboard][img1]
 
 * note that in this image the bottom rail in the breadboard has 12V, and the top rail is 5V. Don't mix them up!
-* The PWM pin in the fan is NOT next to the power wires! Put it in the correct position or you'll fry the ESP32!
+* The PWM pin in the fan is NOT the one next to the power wires! Put it in the correct position or you'll fry the ESP32!
 * By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25.
 * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
 * The 100KΩ resistor goes between 3V and the thermistor, as in this image:
