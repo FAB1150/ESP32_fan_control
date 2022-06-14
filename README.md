@@ -7,7 +7,7 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 * A PWM fan (or anything that accepts a PWM signal that you want to control)
 * A [voltage regulator][link2] for the ESP32 (if you have a 12V fan)
 * An [NTC thermistor][link3] (take one from a 3D printer hotend), preferrably a 100K 3950
-* A 10KΩ resistor
+* A 100KΩ resistor
 * A pull-down resistor (1KΩ is fine)
 * A 12V voltage source (or 5V for 5V fans)
 * Some free time
@@ -17,6 +17,7 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 * If you want to put everything on a breadboard, the ESP32s without silkscreen legends are thinner
 * If you use 12V fans, the voltage regulators linked above are configurable. Get a thin blade and some solder
 * If you use small 5V fans you don't need to step down the voltage and can just use a 5V supply for everything
+* the thermistor resistor isn't necessarily 100KΩ, use the [voltage divider equation][link5] to find an appropriate resistor (we'll set this up in the code). Usually a resistor with the same value as the thermistor is good
 
 ## Getting Started
 Download 
@@ -55,6 +56,7 @@ set up the temperatures, max and min PWM, curve shape
 [link2]: https://www.amazon.com/Weewooday-Regulator-Voltage-Converter-Transformer/dp/B08JZ5FVLC/ref=sr_1_3?crid=3E4K4QAQ63O3Y&keywords=mini+voltage+regulator&qid=1655223958&sprefix=mini+voltage+regulator%2Caps%2C152&sr=8-3
 [link3]: https://www.amazon.com/HICTOP-Thermistors-Sensor-Reprap-printer/dp/B0150YLX9C/ref=sr_1_1_sspa?crid=3AMQB4ZI9Y2LA&keywords=ntc%2B3950%2B100k%2Bthermistor&qid=1655224094&sprefix=NTC%2B%2Caps%2C148&sr=8-1-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExRDk1SURYOVhDVVJZJmVuY3J5cHRlZElkPUEwNTk4NTk5MjVGQ0NJSkJORjNQSiZlbmNyeXB0ZWRBZElkPUEwNDUwMzU1V0c2STZUTUhFUjROJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ&th=1
 [link4]: https://www.upesy.com/blogs/tutorials/esp32-pinout-reference-gpio-pins-ultimate-guide
+[link5]: https://ohmslawcalculator.com/voltage-divider-calculator
 
 [img1]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/breadboard%20schematic.jpg?raw=true
 [img2]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/thermistor%20wiring.jpg?raw=true
