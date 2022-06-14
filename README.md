@@ -20,7 +20,7 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 * the thermistor resistor isn't necessarily 100KΩ, use the [voltage divider equation][link5] to find an appropriate resistor (we'll set this up in the code). Usually a resistor with the same value as the thermistor is good
 
 ## Getting Started
-Download 
+\#TODO 
 
 ## Wiring
 Wiring everything up is fairly easy, as you can usually do everything on one side of the ESP32. Again, make sure to [check the pinout of your board][link4], as some have the 3V3 output on the other side!
