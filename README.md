@@ -20,7 +20,10 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 * the thermistor resistor isn't necessarily 100KΩ, use the [voltage divider equation][link5] to find an appropriate resistor (we'll set this up in the code). Usually a resistor with the same value as the thermistor is good
 
 ## Getting Started
-\#TODO 
+* download pwm_fan_control.ino from its folder and open it with the arduino IDE
+* if you don't know how to flash to the ESP32 from Arduino IDE, follow [this][link6] tutorial to get started!
+* Wire everything up
+* set up the code 
 
 ## Wiring
 Wiring everything up is fairly easy, as you can usually do everything on one side of the ESP32. Again, make sure to [check the pinout of your board][link4], as some have the 3V3 output on the other side!
@@ -28,6 +31,7 @@ Wiring everything up is fairly easy, as you can usually do everything on one sid
 Follow this image for reference:
 ![Breadboard][img1]
 
+* note that in this image the bottom rail in the breadboard has 12V, and the top rail is 5V. Don't mix them up!
 * By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25.
 * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
 * The 100KΩ resistor goes between 3V and the thermistor, as in this image:
@@ -59,6 +63,7 @@ set up the temperatures, max and min PWM, curve shape
 [link3]: https://www.amazon.com/HICTOP-Thermistors-Sensor-Reprap-printer/dp/B0150YLX9C/ref=sr_1_1_sspa?crid=3AMQB4ZI9Y2LA&keywords=ntc%2B3950%2B100k%2Bthermistor&qid=1655224094&sprefix=NTC%2B%2Caps%2C148&sr=8-1-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExRDk1SURYOVhDVVJZJmVuY3J5cHRlZElkPUEwNTk4NTk5MjVGQ0NJSkJORjNQSiZlbmNyeXB0ZWRBZElkPUEwNDUwMzU1V0c2STZUTUhFUjROJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ&th=1
 [link4]: https://www.upesy.com/blogs/tutorials/esp32-pinout-reference-gpio-pins-ultimate-guide
 [link5]: https://ohmslawcalculator.com/voltage-divider-calculator
+[link6]: https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
 
 [img1]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/breadboard%20schematic.jpg?raw=true
 [img2]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/thermistor%20wiring.jpg?raw=true
