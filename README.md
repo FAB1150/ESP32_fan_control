@@ -21,9 +21,9 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 
 ## Getting Started
 * download pwm_fan_control.ino from its folder and open it with the arduino IDE
-* if you don't know how to flash to the ESP32 from Arduino IDE, follow [this][link6] tutorial to get started!
 * Wire everything up
 * set up the code and flash it to the ESP32
+* if you don't know how to flash to the ESP32 from Arduino IDE, follow [this][link6] tutorial to get started
 * you're done!
 
 ## Wiring
@@ -33,11 +33,11 @@ Follow this image for reference:
 ![Breadboard][img1]
 
 * note that in this image the bottom rail in the breadboard has 12V, and the top rail is 5V. Don't mix them up!
-* By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25.
+* By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25. Check where the pins are on your board, as some have them scrambled in different places
 * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
 * The 100KΩ resistor goes between 3V and the thermistor, as in this image:
 ![thermistor][img2]
-* You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one :)
+* You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one
 ![voltage regulator][img3]
 
 ## Setup the code
