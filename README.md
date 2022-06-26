@@ -39,6 +39,7 @@ Follow this image for reference:
 ![thermistor][img2]
 * You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one
 ![voltage regulator][img3]
+* be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!m
 
 ## Setup the code
 \#todo
