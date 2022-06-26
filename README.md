@@ -33,7 +33,8 @@ Follow this image for reference:
 ![Breadboard][img1]
 
 * note that in this image the bottom rail in the breadboard has 12V, and the top rail is 5V. Don't mix them up!
-* By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25. Check where the pins are on your board, as some have them scrambled in different places
+* the pin next to the 5V input is NOT a ground! it doesn't say GND, but CMD. follow the diagram in the image above!
+* By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25. Check where the pins are on your board, as some have them scrambled in different places. If you choose differents pins, you can edit the default ones in the next step. For the thermistor input, make sure to [choose a pin][link4] connected to the ADC (ADCx_y in the website's image)
 * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
 * The 100KΩ resistor goes between 3V and the thermistor, as in this image:
 ![thermistor][img2]
