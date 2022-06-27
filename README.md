@@ -59,7 +59,7 @@ We're almost done! Now you need to set up the code.
   //thermistor pin
     const int thrm = 25;
 ```
-#### Now you need to define the temperatures for the fan curve!
+### Now you need to define the temperatures for the fan curve!
   * Keep this line uncommented if you want the fan to turn off when below the minimum temperature, or comment it if you want the fan to always spin
     ``` c++
     #define FAN_OFF
@@ -82,7 +82,7 @@ this temperature the fan just spins at the minimum speed you set later)
     ![fan curve][img4]
   * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
 
-#### Now you have to calibrate the thermistor!
+### Now you have to calibrate the thermistor!
 This is an important step, as as I said a few times already the ESP32 ADC is not precise. The default value works, but don't expect to get a precise temperature reading from it!
 
 * Uncomment DEBUG, in line 4, as we'll need to know the readings of the thermistor
