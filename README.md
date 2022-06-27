@@ -41,7 +41,8 @@ Follow this image for reference:
 * You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one.
 * The Enable pin of the regulator will stay discconnected, as the regulator can stay on all of the time.
 ![voltage regulator][img3]
-* be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!
+* Be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!
+* If you're following these instructions in order and plan on calibrating the thermistor, no need to plug the fan in yet. Do it at the end, as it's quite clumsy
 
 ## Set up the code
 We're almost done! Now you need to set up the code.
@@ -80,6 +81,15 @@ this temperature the fan just spins at the minimum speed you set later)
   * You set up your fan curve! To aid in visualizing it, here's how the default fan curve looks like:
     ![fan curve][img4]
   * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
+
+#### Now you have to calibrate the thermistor!
+This is an important step, as as I said a few times already the ESP32 ADC is not precise. The default value works, but don't expect to get a precise temperature reading from it!
+
+* Uncomment DEBUG, in line 4, as we'll need to know the readings of the thermistor
+  ``` c++
+  #define DEBUG
+  ```
+* Now flas the code to the ESP32. This also lets you know if you made any mistakes in the fan curve configuration! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
 
 \#todo
 define the correct pins
