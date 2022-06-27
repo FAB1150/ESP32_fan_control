@@ -78,7 +78,8 @@ this temperature the fan just spins at the minimum speed you set later)
     const int MAXTEMP = 60;
     ```
   * You set up your fan curve! To aid in visualizing it, here's how the default fan curve looks like:
-![fan curve][img4]
+    ![fan curve][img4]
+  * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
 
 \#todo
 define the correct pins
