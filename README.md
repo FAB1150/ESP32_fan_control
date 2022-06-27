@@ -77,6 +77,8 @@ this temperature the fan just spins at the minimum speed you set later)
     ``` c++
     const int MAXTEMP = 60;
     ```
+  * You set up your fan curve! To aid in visualizing it, here's how the default fan curve looks like:
+![fan curve][img4]
 
 \#todo
 define the correct pins
@@ -106,3 +108,4 @@ set up the temperatures, max and min PWM, curve shape
 [img1]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/breadboard%20schematic.jpg?raw=true
 [img2]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/thermistor%20wiring.jpg?raw=true
 [img3]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/voltage%20regulator.jpg?raw=true
+[img4]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/FanCurve.jpeg?raw=true
