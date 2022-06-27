@@ -95,9 +95,7 @@ This is an important step, as as I said a few times already the ESP32 ADC is not
 * Now flash the code to the ESP32. This also lets you know if you made any mistakes in the fan curve configuration! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
 
 \#todo
-define the correct pins
-calibrate thermistor (website reference). Decomment #define DEBUG!!
-set up the temperatures, max and min PWM, curve shape
+calibrate thermistor (website reference). Recomment #define DEBUG in the end.
 
 ``` c++
 #placeholder
