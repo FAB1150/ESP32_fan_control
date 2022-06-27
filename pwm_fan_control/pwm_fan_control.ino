@@ -27,11 +27,6 @@
     #define CURVE_SIGMOID //approximation of a sigmoid curve. It's a ramp that starts climbing from MINTEMP and caps off at MAXTEMP, with the fan speed at maxDutyCycle
       const int MAXTEMP = 60; //only for the sigmoid curve
 
-//PWM properties (for fans, a 25khz frequency is needed)
-  const int freq = 25000;
-  const int ledChannel = 0;
-  const int resolution = 8;
-
 //variables for the thermistor resistance calculation
   const float V_OFFSET = 0.0; //offset between the readings and the actual voltage input, because the esp32 ADC is garbage (if in doubt leave at 0)
   const float Vcc = 3.3; //voltage reference of the voltage divider
@@ -42,6 +37,11 @@
 
 //initializing our duty cycle variable
   int dutyCycle = 0;
+
+//PWM properties (for fans, a 25khz frequency is needed). No need to edit this
+  const int freq = 25000;
+  const int ledChannel = 0;
+  const int resolution = 8;
 
 void setup() {
   
