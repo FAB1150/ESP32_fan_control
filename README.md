@@ -87,7 +87,7 @@ this temperature the fan just spins at the minimum speed you set later)
 
 ### Now you have to calibrate the thermistor!
 This is an important step, as as I said a few times already the ESP32 ADC is not precise. The default value works, but don't expect to get a precise temperature reading from it!
-A laptop here is pretty handy, as you'll have to move around a bit while getting some readings.
+A laptop here is pretty handy, as you'll have to move around a bit while getting some readings. A kitchen thermometer is pretty handy too, but not strictly necessary if you don't have one.
 
 * Uncomment DEBUG, in line 4, as we'll need to know the readings of the thermistor
   ``` c++
