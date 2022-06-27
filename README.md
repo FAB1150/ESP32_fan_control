@@ -44,7 +44,7 @@ Follow this image for reference:
 * be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!
 
 ## Set up the code
-We're almost done! Now you need to set up the code:
+We're almost done! Now you need to set up the code. It is well documented, but make sure to follow this readme at least for the thermistor calibration!
 * After downloading it, open pwm_fan_control.ino with the Arduino IDE
 * If you have never used an ESP32 with the Arduino IDE yet, follow [this tutorial][link6] to get started. Now that you see the esp32 code correctly, we can go on editing our settings.
 * define the correct pins by editing these two variables, if you used the same pins as me you don't have to modify this
@@ -56,8 +56,16 @@ We're almost done! Now you need to set up the code:
   //thermistor pin
     const int thrm = 25;
 ```
-* 
-
+* Now you need to define the temperatures for the fan curve:
+  * Keep this line uncommented if you want the fan to turn off when below the minimum temperature, or comment it if you want the fan to always spin
+    ``` c++
+    #define FAN_OFF
+    ```
+  * This variable sets the minimum temperature that makes the fan spin (if you commented FAN_OFF, below 
+this temperature the fan just spins at the minimum speed you set later)
+    ``` c++
+    const int MINTEMP = 35;
+    ```
 
 \#todo
 define the correct pins
