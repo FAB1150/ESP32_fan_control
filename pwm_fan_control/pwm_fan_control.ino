@@ -24,7 +24,7 @@
     //#define CURVE_EXP //exponential curve. Use for temperatures from 15 to 30C
     //#define CURVE_TIMESTWO //Use for temperatures up to 125C, gentler slope
     //#define CURVE_TIMESTHREE //Use for temperatures up to 85C, more aggressive
-    #define CURVE_SIGMOID //approximation of a sigmoid curve. It's a ramp that starts climbing from MINTEMP and caps off at maxDutyCycle at MAXTEMP
+    #define CURVE_SIGMOID //approximation of a sigmoid curve. It's a ramp that starts climbing from MINTEMP and caps off at MAXTEMP, with the fan speed at maxDutyCycle
       const int MAXTEMP = 60; //only for the sigmoid curve
 
 //PWM properties (for fans, a 25khz frequency is needed)
