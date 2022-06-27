@@ -1,3 +1,6 @@
+# THIS README FILE IS A WIP
+### the code works, but the instructions aren't finalized. Expect a bunch of activity in the file!
+
 # Temperature fan control with an ESP32
 
 A simple way to output a PWM signal based on temperature readings by a thermistor
