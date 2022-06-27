@@ -3,6 +3,12 @@
 //uncomment if you want serial output (temperature  measured_voltage  resistance  dutyCycle)
   //#define DEBUG
 
+//setting the I/O pins
+  //the output pin
+    const int fanOutput = 32;
+  //thermistor pin
+    const int thrm = 25;
+
 //settings for the fan curve
   //minimum temperature that makes the fan spin
     const int MINTEMP = 35;
@@ -20,12 +26,6 @@
     //#define CURVE_TIMESTHREE //Use for temperatures up to 85C, more aggressive
     #define CURVE_SIGMOID //approximation of a sigmoid curve. It's a ramp that starts climbing from MINTEMP and caps off at maxDutyCycle at MAXTEMP
       const int MAXTEMP = 60; //only for the sigmoid curve
-
-//setting the I/O pins
-  //the output pin
-    const int fanOutput = 32;
-  //thermistor pin
-    const int thrm = 25;
 
 //PWM properties (for fans, a 25khz frequency is needed)
   const int freq = 25000;

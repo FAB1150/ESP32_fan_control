@@ -23,7 +23,7 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 * download pwm_fan_control.ino from its folder and open it with the arduino IDE
 * Wire everything up
 * set up the code and flash it to the ESP32
-* if you don't know how to flash to the ESP32 from Arduino IDE, follow [this][link6] tutorial to get started
+* if you don't know how to flash to the ESP32 from Arduino IDE, follow [this tutorial][link6] to get started
 * you're done!
 
 ## Wiring
@@ -41,9 +41,24 @@ Follow this image for reference:
 * You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one.
 * The Enable pin of the regulator will stay discconnected, as the regulator can stay on all of the time.
 ![voltage regulator][img3]
-* be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!m
+* be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!
 
-## Setup the code
+## Set up the code
+We're almost done! Now you need to set up the code:
+* After downloading it, open pwm_fan_control.ino with the Arduino IDE
+* If you have never used an ESP32 with the Arduino IDE yet, follow [this tutorial][link6] to get started. Now that you see the esp32 code correctly, we can go on editing our settings.
+* define the correct pins by editing these two variables, if you used the same pins as me you don't have to modify this
+
+``` arduino
+//setting the I/O pins
+  //the output pin
+    const int fanOutput = 32;
+  //thermistor pin
+    const int thrm = 25;
+```
+* 
+
+
 \#todo
 define the correct pins
 calibrate thermistor (website reference). Decomment #define DEBUG!!
