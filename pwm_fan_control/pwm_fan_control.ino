@@ -36,8 +36,8 @@
   const float V_OFFSET = 0.0; //offset between the readings and the actual voltage input, because the esp32 ADC is garbage (if in doubt leave at 0)
   const float Vcc = 3.3; //voltage reference of the voltage divider
   const float R_1 = 100000.0; //resistance in Ohms of the first resistor in the voltage divider (2nd resistor is the thermistor)
-  const float R_Tk = 54936.3; //resistance in Ohms of the thermistor at 25°C (nominal resistance)
-  const float BCoeff = 2773.73; //B coefficient of the thermistor (the numbers in the name)
+  const float R_Tk = 100000.0; //resistance in Ohms of the thermistor at 25°C (nominal resistance)
+  const float BCoeff = 3950.0; //B coefficient of the thermistor (the numbers in the name)
   const int averaging = 70; //how many readings we average to spit out a value
 
 //initializing our duty cycle variable
