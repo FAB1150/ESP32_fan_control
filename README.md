@@ -87,12 +87,16 @@ this temperature the fan just spins at the minimum speed you set later)
 
 ### Now you have to calibrate the thermistor!
 This is an important step, as as I said a few times already the ESP32 ADC is not precise. The default value works, but don't expect to get a precise temperature reading from it!
+A laptop here is pretty handy, as you'll have to move around a bit while getting some readings.
 
 * Uncomment DEBUG, in line 4, as we'll need to know the readings of the thermistor
   ``` c++
   #define DEBUG
   ```
 * Now flash the code to the ESP32. This also lets you know if you made any mistakes in the fan curve configuration! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
+* With the ESP32 still connected, in the IDE go to tools > Serial Monitor. Select Baud 115200 and you'll see a flow of numbers!
+* Get some water in a pot on a stove, and some water from the fridge with ice in it. We want three reference points at 100C, 0C and... 36C, your body temp
+
 
 \#todo
 calibrate thermistor (website reference). Recomment #define DEBUG in the end.
