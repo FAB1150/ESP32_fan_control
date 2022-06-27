@@ -4,21 +4,21 @@
   //#define DEBUG
 
 //setting the I/O pins
-  //the output pin
+  //the fan PWM output pin
     const int fanOutput = 32;
   //thermistor pin
     const int thrm = 25;
 
 //settings for the fan curve
-  //minimum temperature that makes the fan spin
-    const int MINTEMP = 35;
   //comment if you want the fans to spin at the minimum speed (minDutyCycle) instead of turning off
     #define FAN_OFF
-  
+  //minimum temperature that makes the fan spin
+    const int MINTEMP = 35;
+  //minimum PWM is when the fan just starts to spin
+    const int minDutyCycle = 40;
+    
   //maximum fan speed, from 0 to 255 (63 is 25%, 127 is 50%, 190 is 75%)
     const int maxDutyCycle = 190; 
-  //minimum PWM is when the fan just starts to spin
-    const int minDutyCycle = 35;
   
   //select the fan curve you want to use. Only uncomment one!
     //#define CURVE_EXP //exponential curve. Use for temperatures from 15 to 30C
