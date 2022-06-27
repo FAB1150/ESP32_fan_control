@@ -44,19 +44,21 @@ Follow this image for reference:
 * be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!
 
 ## Set up the code
-We're almost done! Now you need to set up the code. It is well documented, but make sure to follow this readme at least for the thermistor calibration!
+We're almost done! Now you need to set up the code.
+#### It is well documented, but make sure to follow this readme at least for the thermistor calibration!
+
 * After downloading it, open pwm_fan_control.ino with the Arduino IDE
 * If you have never used an ESP32 with the Arduino IDE yet, follow [this tutorial][link6] to get started. Now that you see the esp32 code correctly, we can go on editing our settings.
 * define the correct pins by editing these two variables, if you used the same pins as me you don't have to modify this
 
 ``` c++
 //setting the I/O pins
-  //the output pin
+  //the fan PWM output pin
     const int fanOutput = 32;
   //thermistor pin
     const int thrm = 25;
 ```
-* Now you need to define the temperatures for the fan curve:
+#### Now you need to define the temperatures for the fan curve!
   * Keep this line uncommented if you want the fan to turn off when below the minimum temperature, or comment it if you want the fan to always spin
     ``` c++
     #define FAN_OFF
@@ -65,6 +67,15 @@ We're almost done! Now you need to set up the code. It is well documented, but m
 this temperature the fan just spins at the minimum speed you set later)
     ``` c++
     const int MINTEMP = 35;
+    ```
+  * This variable sets the maximum fan speed, it goes from 0 to 255.
+    ``` c++
+    const int maxDutyCycle = 190; 
+    ```
+  * Now you have a few different fan curves you can experiment with. I recommend just using the default one, as it's the most customizeable.
+  * At this temperature the fan curve reaches maxDutyCycle, and caps off
+    ``` c++
+    const int MAXTEMP = 60;
     ```
 
 \#todo
