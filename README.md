@@ -49,7 +49,7 @@ We're almost done! Now you need to set up the code:
 * If you have never used an ESP32 with the Arduino IDE yet, follow [this tutorial][link6] to get started. Now that you see the esp32 code correctly, we can go on editing our settings.
 * define the correct pins by editing these two variables, if you used the same pins as me you don't have to modify this
 
-``` arduino
+``` c++
 //setting the I/O pins
   //the output pin
     const int fanOutput = 32;
@@ -64,7 +64,7 @@ define the correct pins
 calibrate thermistor (website reference). Decomment #define DEBUG!!
 set up the temperatures, max and min PWM, curve shape
 
-``` arduino
+``` c++
 #placeholder
 ```
 
