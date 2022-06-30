@@ -104,7 +104,9 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
 * As you might have guessed, this is more of an art than a science (if you don't have calibrated temperature references, of course). After some messing around, you'll know you got it right!
 * Go back to [the website][link7], and focus on the "Please input resistance-temperature pairs" section.
   * Under "T (°C)", put 0, 36.5, 100, or the values you got with your thermometer (T1 is the cold water, T2, is your body temperature, T3 is the boiling water)
-  * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3) ![Values input][img5]
+  * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3)
+
+    ![Values input][img5]
   * A rule of thumb to see if you got readings that make sense is to see if the blue and the yellow curves in the graph are close. They'll never be exactly the same, but they shouldn't be too far apart.
   * Now, go down to the "Calculated β model coefficients" section. Keep note of the two numbers you see.
 ![Beta coefficients][img6]
