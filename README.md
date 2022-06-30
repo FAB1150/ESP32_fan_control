@@ -46,6 +46,9 @@ Follow this image for reference:
 
 ## Set up the code
 We're almost done! Now you need to set up the code.
+
+This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward, so
+
 #### It is well documented, but make sure to follow this readme at least for the thermistor calibration!
 
 * After downloading it, open pwm_fan_control.ino with the Arduino IDE
@@ -151,8 +154,6 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
 * Flash the code to the ESP32, and try to measure various things looking at the first value on the left. That's your temperature!
 * If you're getting non-sensical readings, you'll have to do everything again (if you didn't use a thermometer try  to use one, and experiment with the water temperatures. Try water from the fridge instead of icy water, and water that's not quite boiling yet, for example.
 * If everything looks good, you're done! Go back to line 4, comment DEBUG back and flash the code to the ESP once again. The hard part is over!
-
-* This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward, so
 
 ## Usage
 
