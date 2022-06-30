@@ -26,6 +26,16 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
   * set up the code and flash it to the ESP32
   * if you don't know how to flash to the ESP32 from Arduino IDE, follow [this tutorial][link6] to get started
   * you're done!
+ 
+### Table of contents
+  * [Getting the materials][sect1]
+  * [wiring][sect2]
+  * [Setting up the code][sect3]
+    * [Setting up the fan curve][sect4]
+    * [Calibration][sect5]
+      * [Opening the serial monitor][sect6]
+      * [figuring out the voltage offset][sect7]
+      * [calibrating the thermistor][sect8]
 
 ## Wiring
 Wiring everything up is fairly easy, as you can usually do everything on one side of the ESP32. Again, make sure to [check the pinout of your board][link4], as some have the 3V3 output on the other side!
@@ -93,6 +103,9 @@ this temperature the fan just spins at the minimum speed you set later)
   * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
   * If you don't wish to calibrate the thermistor readings, you're done! you just need to flash the code to the ESP32 and you're golden! If you have difficulty flashing to the ESP32 and you did everything [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
   * If you want to continue, keep reading of course!
+
+## Calibration
+This is needed to get decent readings out of the thermistor. You can probably skip the voltage offset part, as most ESP32s have similar ADCs, but if you're getting weird readings and can't seem to be able to get a good thermistor calibration, you might need to look into it. 
 
 ### Opening the serial monitor
 For the next two steps we're gonna need to see the values that the ESP is reading. We'll be able to by using the serial monitor of the Arduino IDE
@@ -188,3 +201,12 @@ You're free to do what you want with it. I use it to drive a fan on a solar inve
 [img7]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/serial%20monitor.jpg?raw=true
 [img8]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/ADC%20graph.jpg?raw=true
 [img9]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/ADC%20calibration%20with%20excel.jpg?raw=true
+
+[sect1]: https://github.com/FAB1150/ESP32_fan_control#what-you-need
+[sect2]: https://github.com/FAB1150/ESP32_fan_control#wiring
+[sect3]: https://github.com/FAB1150/ESP32_fan_control#set-up-the-code
+[sect4]: https://github.com/FAB1150/ESP32_fan_control#now-you-need-to-define-the-temperatures-for-the-fan-curve
+[sect5]: https://github.com/FAB1150/ESP32_fan_control#calibration
+[sect6]: https://github.com/FAB1150/ESP32_fan_control#opening-the-serial-monitor
+[sect7]: https://github.com/FAB1150/ESP32_fan_control#calibrate-the-voltage-readings
+[sect8]: https://github.com/FAB1150/ESP32_fan_control#now-you-have-to-calibrate-the-thermistor
