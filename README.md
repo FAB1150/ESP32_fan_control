@@ -116,7 +116,7 @@ My ESP32 reads consistently about 0.1V too low, until it gets to 2.7V where it s
   * Ideally you want to sweep all the voltage range from 0 to 3.3V, but that takes time. The values we care about are approximately between 0.5V and 2-2.5V
   * You will end up with something like this, from there you can easily see the difference between the readings and the actual voltage. You can take the most common value, or the average, and use that as the offset!
  
- ![excel values][img9]
+    ![excel values][img9]
 
   * Now go to the  variables for the thermistor resistance calculation section, and write that number down.
     ``` c++
