@@ -32,10 +32,10 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
   * [wiring][sect2]
   * [Setting up the code][sect3]
     * [Setting up the fan curve][sect4]
-    * [Calibration][sect5]
-      * [Opening the serial monitor][sect6]
-      * [figuring out the voltage offset][sect7]
-      * [calibrating the thermistor][sect8]
+  * [Calibration][sect5]
+    * [Opening the serial monitor][sect6]
+    * [figuring out the voltage offset][sect7]
+    * [calibrating the thermistor][sect8]
 
 ## Wiring
 Wiring everything up is fairly easy, as you can usually do everything on one side of the ESP32. Again, make sure to [check the pinout of your board][link4], as some have the 3V3 output on the other side!
