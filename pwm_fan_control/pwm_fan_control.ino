@@ -148,12 +148,12 @@ float getVoltage(int avg_size){
   float V_approx = V_sum / float(avg_size);
 
   //returning the voltage reading. Because of the offset there could be weird readings at the extremes, that are eliminated
-  if(V_approx <= Vcc){
-    return V_approx;
+  if(V_approx <= 0.0){
+    return 0.0;
   }else if(V_approx > Vcc){
     return Vcc;
-  }else if(V_approx <= 0.0){
-    return 0.0;
+  }else{ //if(V_approx <= Vcc) and more than 0V, everything is OK
+    return V_approx;
   }
 }
 
