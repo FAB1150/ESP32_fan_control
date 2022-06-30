@@ -28,7 +28,7 @@
       const int MAXTEMP = 60; //only for the sigmoid curve - described in the README file
 
 //variables for the thermistor resistance calculation
-  const float V_OFFSET = 0.0; //offset between the readings and the actual voltage input, because the esp32 ADC is garbage (if in doubt leave at 0)
+  const float V_OFFSET = 0.1; //offset between the readings and the actual voltage input, because the esp32 ADC is garbage. Documented in the README
   const float Vcc = 3.3; //voltage reference of the voltage divider
   const float R_1 = 100000.0; //resistance in Ohms of the first resistor in the voltage divider (2nd resistor is the thermistor)
   const float R_Tk = 100000.0; //resistance in Ohms of the thermistor at 25°C (nominal resistance)
