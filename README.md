@@ -167,7 +167,7 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
 
       ![Beta coefficients][img6]
       
-  * We can go back to the code! Under the variables for the thermistor resistance calculation section, you need to edit R_Tk and BCoeff with the first and second value we took from the calculator respectively. (R_Tk is R(25°C)=[ ]Ω and BCoeff isβ=[ ]K). If they happen to be whole numbers, still use the decimal number! (write x.0)
+  * We can go back to the code! Under the variables for the thermistor resistance calculation section, you need to edit R_Tk and BCoeff with the first and second value we took from the calculator respectively. (R_Tk is R(25°C)=[ ]Ω and BCoeff isβ=[ ]K). If they happen to be whole numbers, still write them as decimals! (write x.0)
     ``` c++
     //variables for the thermistor resistance calculation
       const float R_Tk = 115025.41;
