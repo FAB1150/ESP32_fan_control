@@ -14,7 +14,7 @@
     #define FAN_OFF
   //minimum temperature that makes the fan spin
     const int MINTEMP = 35;
-  //minimum PWM is when the fan just starts to spin
+  //the minimum PWM duty cycle is when the fan just starts to spin. 40 is about right for most fans. Set it even if you use FAN_OFF as it's used in the fan curve calculation!
     const int minDutyCycle = 40;
     
   //maximum fan speed, from 0 to 255 (63 is 25%, 127 is 50%, 190 is 75%)
@@ -25,15 +25,15 @@
     //#define CURVE_TIMESTWO //Use for temperatures up to 125C, gentler slope
     //#define CURVE_TIMESTHREE //Use for temperatures up to 85C, more aggressive
     #define CURVE_SIGMOID //approximation of a sigmoid curve. It's a ramp that starts climbing from MINTEMP and caps off at MAXTEMP, with the fan speed at maxDutyCycle
-      const int MAXTEMP = 60; //only for the sigmoid curve
+      const int MAXTEMP = 60; //only for the sigmoid curve - described in the README file
 
 //variables for the thermistor resistance calculation
   const float V_OFFSET = 0.0; //offset between the readings and the actual voltage input, because the esp32 ADC is garbage (if in doubt leave at 0)
   const float Vcc = 3.3; //voltage reference of the voltage divider
   const float R_1 = 100000.0; //resistance in Ohms of the first resistor in the voltage divider (2nd resistor is the thermistor)
   const float R_Tk = 100000.0; //resistance in Ohms of the thermistor at 25°C (nominal resistance)
-  const float BCoeff = 3950.0; //B coefficient of the thermistor (the numbers in the name)
-  const int averaging = 70; //how many readings we average to spit out a value
+  const float BCoeff = 3950.0; //B coefficient of the thermistor (the numbers in the name of the thermistor - NTC xxxx 100K)
+  const int averaging = 70; //how many readings we average to spit out a value, higher is slower but more stable
 
 //initializing our duty cycle variable
   int dutyCycle = 0;
