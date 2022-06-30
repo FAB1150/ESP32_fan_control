@@ -101,11 +101,9 @@ For the next two steps we're gonna need to see the values that the ESP is readin
 ### TODO calibrate the voltage readings
 This is done to have slightly more accurate voltage readings, as as you might remember the built-in ADC is pretty bad. You'll need a voltage source that can output from 0 to 3.3V, in steps of 0.1V or less, and a multimeter. This is an easy but tedious process, so arm yourself with patience!
 
-My ESP32 reads consistently about 0.1V too low, until it gets to 2.7V where it starts reading too high. We don't really care about those voltages (3.3V would mean a thermistor resistance of 0, so an infinite temperature. At those temperatures we're pretty certain that the fan will be at full speed!), so we can just add 0.1V to all the readings
+My ESP32 reads consistently about 0.1V too low, until it gets to 2.7V where it starts reading too high. We don't really care about those voltages (3.3V would mean a thermistor resistance of 0, so an infinite temperature. At those temperatures we're pretty certain that the fan will be at full speed!), so we can just add 0.1V to all the readings. Your ESP32 will probably  be similar, so if you find this process to be too difficult you can use the default value and skip to the next section.
 
 ![ADC error graph][img8]
-
-Your ESP32 will probably  be similar, so if you find this process to be too difficult you can use the same value and skip to the next section.
 
 * Remove the thermistor cable from pin 25 (or your thermistor pin if you're not using the default configuration), and connect your voltage source to the pin
 * Open the serial monitor, and start looking at the second value, which is the voltage reading
