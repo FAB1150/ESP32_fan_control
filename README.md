@@ -126,14 +126,11 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
 * If you're getting non-sensical readings, you'll have to do everything again (if you didn't use a thermometer try  to use one, and experiment with the water temperatures. Try water from the fridge instead of icy water, and water that's not quite boiling yet, for example.
 * If everything looks good, you're done! Go back to line 4, comment DEBUG back and flash the code to the ESP once again. The hard part is over!
 
-\#todo
-Recomment #define DEBUG in the end.
+*This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward, so
 
-``` c++
-#placeholder
-```
+## Usage
 
-
+You're free to do what you want with it. I use it to drive a fan on a solar inverter that should be passive but gets way too hot when pulling a consistent load, but PWM is used pretty much anywhere. Use it to drive LEDs, fans, servos, you name it! have fun!
 
 ## License
 [GNU GPLv3.0](https://choosealicense.com/licenses/gpl-3.0/)
