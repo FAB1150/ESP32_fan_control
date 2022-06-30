@@ -68,6 +68,7 @@ void loop(){
     Serial.print(voltage);
     Serial.print("   ");
     Serial.print(resistance/1000);
+    Serial.print("K");
   #endif
 
   //controlling the fan speed with the temperature
