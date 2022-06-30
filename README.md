@@ -163,7 +163,7 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
       ![Values input][img5]
       
     * A rule of thumb to see if you got readings that make sense is to see if the blue and the yellow curves in the graph are close. They'll never be exactly the same, but they shouldn't be too far apart.
-    * Now, go down to the "Calculated β model coefficients" section. Keep note of the two numbers you see.
+  * Now, go down to the "Calculated β model coefficients" section. Keep note of the two numbers you see.
 
       ![Beta coefficients][img6]
       
