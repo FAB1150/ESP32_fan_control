@@ -84,29 +84,60 @@ this temperature the fan just spins at the minimum speed you set later)
   * You set up your fan curve! To aid in visualizing it, here's how the default fan curve looks like:
     ![fan curve][img4]
   * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
+  * If you don't wish to calibrate the thermistor readings, you're done! you just need to flash the code to the ESP32 and you're golden! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
+  * If you want to continue, keep reading of course!
 
-### TODO calibrate the voltage readings
+### Opening the serial monitor
+For the next two steps we're gonna need to see the values that the ESP is reading. We'll be able to by using the serial monitor of the Arduino IDE
 
-### Now you have to calibrate the thermistor!
-This is an important step, as as I said a few times already the ESP32 ADC is not precise. The default value works, but don't expect to get a precise temperature reading from it!
-A laptop here is pretty handy, as you'll have to move around a bit while getting some readings. A kitchen thermometer is pretty handy too, but not strictly necessary if you don't have one.
-
-* Uncomment DEBUG, in line 4, as we'll need to know the readings of the thermistor
+* In the code, uncomment DEBUG to enable it, in line 4
   ``` c++
   #define DEBUG
   ```
-* Now flash the code to the ESP32. This also lets you know if you made any mistakes in the fan curve configuration! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
+* Now flash the code to the ESP32. This also lets you know if you made any mistakes in the fan curve configuration!
 * With the ESP32 still connected, in the IDE go to tools > Serial Monitor. Select Baud 115200 and you'll see a flow of numbers!
 
   ![serial monitor][img7]
 
 * This is your friend. The columns of numbers you see are respectively the temperature reading, the voltage reading and the resistance of the thermistor, and the PWM output (from 0 to 255) to the fan.
+
+### TODO calibrate the voltage readings
+This is done to have slightly more accurate voltage readings, as as you might remember the built-in ADC is pretty bad. You'll need a voltage source that can output from 0 to 3.3V, in steps of 0.1V or less, and a multimeter. This is an easy but tedious process, so arm yourself with patience!
+
+My ESP32 reads consistently about 0.1V too low, until it gets to 2.7V where it starts reading too high. We don't really care about those voltages (3.3V would mean a thermistor resistance of 0, so an infinite temperature. At those temperatures we're pretty certain that the fan will be at full speed!), so we can just add 0.1V to all the readings
+
+![ADC error graph][img8]
+
+Your ESP32 will probably  be similar, so if you find this process to be too difficult you can use the same value and skip to the next section.
+
+* Remove the thermistor cable from pin 25 (or your thermistor pin if you're not using the default configuration), and connect your voltage source to the pin
+* Open the serial monitor, and start looking at the second value, which is the voltage reading
+* You're gonna end up with a lot of numbers, to make life easier you can use excel or an equivalent program.
+* Set a voltage between 0.0 and 3.3V, measuer it with a multimeter, write it down and read the votlage in the serial monitor. Note it down too.
+* Set a different voltage, and repeat the process.
+* Ideally you want to sweep all the voltage range from 0 to 3.3V, but that takes time. The values we care about are approximately between 0.5V and 2-2.5V
+* You will end up with something like this, from there you can easily see the difference between the readings and the actual voltage. You can take the most common value, or the average, and use that as the offset!
+
+  ![excel values][img9]
+
+* Now go to the  variables for the thermistor resistance calculation section, and write that number down.
+  ``` c++
+  //variables for the thermistor resistance calculation
+    const float V_OFFSET = 0.1;
+  ```
+* You're done! Let's get to the next section.
+
+### Now you have to calibrate the thermistor!
+This is an important step, as as I said a few times already the ESP32 ADC is not precise. The default value works, but don't expect to get a precise temperature reading from it!
+A laptop here is pretty handy, as you'll have to move around a bit while getting some readings. A kitchen thermometer is pretty handy too, but not strictly necessary if you don't have one.
+
+* Open the serial monitor, we'll need the resistance readings (third value, xx.xxK)
+* Note that the resistance is given to you in kiloOhms, while the website we're about to use asks for Ohms. Just multiply the numbers you'll get by 1000!
 * Open [this website][link7] and keep it open in a tab, it's the calculator for the values we'll put in the code.
 * Get some water in a pot on a stove, and some water from the fridge with ice in it. We want three reference points at 100C, 0C and... 36C, your body temperature!
 * Now you want to submerge the probe in the boiling water, and read the resistance value in the serial monitor. Don't put the probe too far down or you'll read the temperature of the metal and your reading won't be accurate! Wait for the resistance value to stabilize but be quick, you don't want to ruin your thermistor. Take note of the value somewhere.
 * Do the same in the ice water, after you're fairly sure the temperature stabilized at 0C, note that value down too, and now stick the probe into your mouth. If you have a thermometer here use it, to get a more precise reading. put the probe in the same spot where you took your temperature with the thermometer!
 * As you might have guessed, this is more of an art than a science (if you don't have calibrated temperature references, of course). After some messing around, you'll know you got it right!
-* Note that the resistance is given to you in kiloOhms, while the website we're about to use asks for Ohms. Just multiply by 1000 the numbers you noted down!
 * Go back to [the calculator][link7], and focus on the "Please input resistance-temperature pairs" section.
   * Under "T (°C)", put 0, 36.5, 100, or the values you got with your thermometer (T1 is the cold water, T2, is your body temperature, T3 is the boiling water)
   * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3).
@@ -150,3 +181,5 @@ You're free to do what you want with it. I use it to drive a fan on a solar inve
 [img5]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/values%20input.jpg?raw=true
 [img6]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/Beta%20coefficient.jpg?raw=true
 [img7]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/serial%20monitor.jpg?raw=true
+[img8]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/ADC%20graph.jpg?raw=true
+[img9]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/ADC%20calibration%20with%20excel.jpg?raw=true
