@@ -97,25 +97,34 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
   ```
 * Now flash the code to the ESP32. This also lets you know if you made any mistakes in the fan curve configuration! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
 * With the ESP32 still connected, in the IDE go to tools > Serial Monitor. Select Baud 115200 and you'll see a flow of numbers!
+
+  ![serial monitor][img7]
+
+* This is your friend. The columns of numbers you see are respectively the temperature reading, the voltage reading and the resistance of the thermistor, and the PWM output (from 0 to 255) to the fan.
 * Open [this website][link7] and keep it open in a tab, it's the calculator for the values we'll put in the code.
 * Get some water in a pot on a stove, and some water from the fridge with ice in it. We want three reference points at 100C, 0C and... 36C, your body temperature!
 * Now you want to submerge the probe in the boiling water, and read the resistance value in the serial monitor. Don't put the probe too far down or you'll read the temperature of the metal and your reading won't be accurate! Wait for the resistance value to stabilize but be quick, you don't want to ruin your thermistor. Take note of the value somewhere.
 * Do the same in the ice water, after you're fairly sure the temperature stabilized at 0C, note that value down too, and now stick the probe into your mouth. If you have a thermometer here use it, to get a more precise reading. put the probe in the same spot where you took your temperature with the thermometer!
 * As you might have guessed, this is more of an art than a science (if you don't have calibrated temperature references, of course). After some messing around, you'll know you got it right!
-* Go back to [the website][link7], and focus on the "Please input resistance-temperature pairs" section.
+* Note that the resistance is given to you in kiloOhms, while the website we're about to use asks for Ohms. Just multiply by 1000 the numbers you noted down!
+* Go back to [the calculator][link7], and focus on the "Please input resistance-temperature pairs" section.
   * Under "T (°C)", put 0, 36.5, 100, or the values you got with your thermometer (T1 is the cold water, T2, is your body temperature, T3 is the boiling water)
-  * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3)
+  * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3).
 
     ![Values input][img5]
   * A rule of thumb to see if you got readings that make sense is to see if the blue and the yellow curves in the graph are close. They'll never be exactly the same, but they shouldn't be too far apart.
   * Now, go down to the "Calculated β model coefficients" section. Keep note of the two numbers you see.
-![Beta coefficients][img6]
+
+    ![Beta coefficients][img6]
 * We can go back to the code! Under the variables for the thermistor resistance calculation section, you need to edit R_Tk and BCoeff with the first and second value we took from the calculator respectively. (R_Tk is R(25°C)=[ ]Ω and BCoeff isβ=[ ]K). If they happen to be whole numbers, still use the decimal number! (write x.0)
   ``` c++
   //variables for the thermistor resistance calculation
     const float R_Tk = 115025.41;
     const float BCoeff = 3433.3;
   ```
+* Flash the code to the ESP32, and try to measure various things looking at the first value on the left. That's your temperature!
+* If you're getting non-sensical readings, you'll have to do everything again (if you didn't use a thermometer try  to use one, and experiment with the water temperatures. Try water from the fridge instead of icy water, and water that's not quite boiling yet, for example.
+* If everything looks good, you're done! Go back to line 4, comment DEBUG back and flash the code to the ESP once again. The hard part is over!
 
 \#todo
 Recomment #define DEBUG in the end.
@@ -143,3 +152,4 @@ Recomment #define DEBUG in the end.
 [img4]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/FanCurve.jpeg?raw=true
 [img5]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/values%20input.jpg?raw=true
 [img6]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/Beta%20coefficient.jpg?raw=true
+[img7]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/serial%20monitor.jpg?raw=true
