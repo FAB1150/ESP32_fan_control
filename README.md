@@ -47,7 +47,7 @@ Follow this image for reference:
 ## Set up the code
 We're almost done! Now you need to set up the code.
 
-This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward, so
+This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward!
 
 #### It is well documented, but make sure to follow this readme at least for the thermistor calibration!
 
