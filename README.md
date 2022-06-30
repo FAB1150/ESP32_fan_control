@@ -55,13 +55,13 @@ We're almost done! Now you need to set up the code.
 * If you have never used an ESP32 with the Arduino IDE yet, follow [this tutorial][link6] to get started. Now that you see the esp32 code correctly, we can go on editing our settings.
 * define the correct pins by editing these two variables, if you used the same pins as me you don't have to modify this
 
-``` c++
-//setting the I/O pins
-  //the fan PWM output pin
-    const int fanOutput = 32;
-  //thermistor pin
-    const int thrm = 25;
-```
+  ``` c++
+  //setting the I/O pins
+    //the fan PWM output pin
+      const int fanOutput = 32;
+    //thermistor pin
+      const int thrm = 25;
+  ```
 ### Now you need to define the temperatures for the fan curve!
   * Keep this line uncommented if you want the fan to turn off when below the minimum temperature, or comment it if you want the fan to always spin
     ``` c++
@@ -102,20 +102,27 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
 * Now you want to submerge the probe in the boiling water, and read the resistance value in the serial monitor. Don't put the probe too far down or you'll read the temperature of the metal and your reading won't be accurate! Wait for the resistance value to stabilize but be quick, you don't want to ruin your thermistor. Take note of the value somewhere.
 * Do the same in the ice water, after you're fairly sure the temperature stabilized at 0C, note that value down too, and now stick the probe into your mouth. If you have a thermometer here use it, to get a more precise reading. put the probe in the same spot where you took your temperature with the thermometer!
 * As you might have guessed, this is more of an art than a science (if you don't have calibrated temperature references, of course). After some messing around, you'll know you got it right!
-* Go back to [the website][link7] 
-
+* Go back to [the website][link7], and focus on the "Please input resistance-temperature pairs" section.
+  * Under "T (°C)", put 0, 36.5, 100, or the values you got with your thermometer (T1 is the cold water, T2, is your body temperature, T3 is the moiling water)
+  * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3)
+    ![Values input][img5]
+  * A rule of thumb to see if you got readings that make sense is to see if the blue and the yellow curves in the graph are close. They'll never be exactly the same, but they shouldn't be too far apart.
+  * Now, go down to the "Calculated β model coefficients" section. Keep note of the two numbers you see.
+![Beta coefficients][img6]
+* We can go back to the code! Under the variables for the thermistor resistance calculation section, you need to edit R_Tk and BCoeff with the first and second value we took from the calculator respectively. (R_Tk is R(25°C)=[ ]Ω and BCoeff isβ=[ ]K). If they happen to be whole numbers, still use the decimal number! (write x.0)
+  ``` c++
+  //variables for the thermistor resistance calculation
+    const float R_Tk = 115025.41;
+    const float BCoeff = 3433.3;
+  ```
 
 \#todo
-calibrate thermistor (website reference). Recomment #define DEBUG in the end.
+Recomment #define DEBUG in the end.
 
 ``` c++
 #placeholder
 ```
 
-## Usage
-``` arduino
-#placeholder
-```
 
 
 ## License
@@ -133,3 +140,5 @@ calibrate thermistor (website reference). Recomment #define DEBUG in the end.
 [img2]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/thermistor%20wiring.jpg?raw=true
 [img3]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/voltage%20regulator.jpg?raw=true
 [img4]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/FanCurve.jpeg?raw=true
+[img5]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/values%20input.jpg?raw=true
+[img6]: https://github.com/FAB1150/ESP32_fan_control/blob/main/images/Beta%20coefficient.jpg?raw=true
