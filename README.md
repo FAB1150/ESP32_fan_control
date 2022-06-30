@@ -81,7 +81,7 @@ this temperature the fan just spins at the minimum speed you set later)
   * You set up your fan curve! To aid in visualizing it, here's how the default fan curve looks like:
     ![fan curve][img4]
   * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
-  * If you don't wish to calibrate the thermistor readings, you're done! you just need to flash the code to the ESP32 and you're golden! If you have difficulty flashing to the ESP32 and you did everything follow [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
+  * If you don't wish to calibrate the thermistor readings, you're done! you just need to flash the code to the ESP32 and you're golden! If you have difficulty flashing to the ESP32 and you did everything [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
   * If you want to continue, keep reading of course!
 
 ### Opening the serial monitor
