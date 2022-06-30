@@ -157,7 +157,7 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
 * If you're getting non-sensical readings, you'll have to do everything again (if you didn't use a thermometer try  to use one, and experiment with the water temperatures. Try water from the fridge instead of icy water, and water that's not quite boiling yet, for example.
 * If everything looks good, you're done! Go back to line 4, comment DEBUG back and flash the code to the ESP once again. The hard part is over!
 
-*This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward, so
+* This README guides you through the basic settings, they'll easily get you up and running. It skips some of the settings you don't need to edit for it to work correctly, but they're all described in the code and pretty straight forward, so
 
 ## Usage
 
