@@ -31,17 +31,22 @@ A simple way to output a PWM signal based on temperature readings by a thermisto
 Wiring everything up is fairly easy, as you can usually do everything on one side of the ESP32. Again, make sure to [check the pinout of your board][link4], as some have the 3V3 output on the other side!
 
 Follow this image for reference:
-![Breadboard][img1]
+
+  ![Breadboard][img1]
 
   * note that in this image the bottom rail in the breadboard has 12V, and the top rail is 5V. Don't mix them up!
   * the pin next to the 5V input is NOT a ground! it doesn't say GND, but CMD. follow the diagram in the image above!
   * By default, the fan PWM output (green wire) is on pin GPIO35, and the thermistor input (brown wire) is on pin GPIO25. Check where the pins are on your board, as some have them scrambled in different places. If you choose differents pins, you can edit the default ones in the next step. For the thermistor input, make sure to [choose a pin][link4] connected to the ADC (ADCx_y in the website's image)
   * The pull-down resistor (connected to the green wire) isn't strictly necessary, but if you don't use it some fans might misbehave
   * The 100KΩ resistor goes between 3V and the thermistor, as in this image:
-![thermistor][img2]
+  
+    ![thermistor][img2]
+
   * You need to set up the voltage regulator for 5V. To do this, cut the little trace over the ADJ pad with an xacto knife (circled in the image), and bridge the two pads for 5V. If you plan on modifying the project a bit, remember that these voltage regulators can't boost the voltage, only step it down! If you need to go up, buy a different one.
   * The Enable pin of the regulator will stay discconnected, as the regulator can stay on all of the time.
-![voltage regulator][img3]
+  
+    ![voltage regulator][img3]
+
   * Be careful with connecting the fan wires correctly! the PWM signal wire is NOT next to the power wires, but the one on the other side of the connector! be careful or you will fry your esp32!
   * If you're following these instructions in order and plan on calibrating the thermistor, no need to plug the fan in yet. Do it at the end, as it's quite clumsy
 
@@ -82,7 +87,9 @@ this temperature the fan just spins at the minimum speed you set later)
     const int MAXTEMP = 60;
     ```
   * You set up your fan curve! To aid in visualizing it, here's how the default fan curve looks like:
+  
     ![fan curve][img4]
+    
   * Note that if FAN_OFF is defined, when the temperature reaches MINTEMP the fan will turn off instead of staying at minDutyCycle.
   * If you don't wish to calibrate the thermistor readings, you're done! you just need to flash the code to the ESP32 and you're golden! If you have difficulty flashing to the ESP32 and you did everything [this tutorial][link6] tells you to do, try holding the BOOT button on the ESP32 while it is flashing. Your finger might hate you ;)
   * If you want to continue, keep reading of course!
@@ -101,12 +108,12 @@ For the next two steps we're gonna need to see the values that the ESP is readin
 
   * This is your friend. The columns of numbers you see are respectively the temperature reading, the voltage reading and the resistance of the thermistor, and the PWM output (from 0 to 255) to the fan.
 
-### TODO calibrate the voltage readings
+### calibrate the voltage readings
 This is done to have slightly more accurate voltage readings, as as you might remember the built-in ADC is pretty bad. You'll need a voltage source that can output from 0 to 3.3V, in steps of 0.1V or less, and a multimeter. This is an easy but tedious process, so arm yourself with patience!
 
 My ESP32 reads consistently about 0.1V too low, until it gets to 2.7V where it starts reading too high. We don't really care about those voltages (3.3V would mean a thermistor resistance of 0, so an infinite temperature. At those temperatures we're pretty certain that the fan will be at full speed!), so we can just add 0.1V to all the readings. Your ESP32 will probably  be similar, so if you find this process to be too difficult you can use the default value and skip to the next section.
 
-![ADC error graph][img8]
+  ![ADC error graph][img8]
 
   * Remove the thermistor cable from pin 25 (or your thermistor pin if you're not using the default configuration), and connect your voltage source to the pin
   * Open the serial monitor, and start looking at the second value, which is the voltage reading
@@ -141,10 +148,12 @@ A laptop here is pretty handy, as you'll have to move around a bit while getting
     * Under "R (Ω)", put the readings you got from the serial monitor respectively for icy water, your body temperature, and the boiling water (R1, R2, R3).
  
       ![Values input][img5]
+      
     * A rule of thumb to see if you got readings that make sense is to see if the blue and the yellow curves in the graph are close. They'll never be exactly the same, but they shouldn't be too far apart.
     * Now, go down to the "Calculated β model coefficients" section. Keep note of the two numbers you see.
 
       ![Beta coefficients][img6]
+      
   * We can go back to the code! Under the variables for the thermistor resistance calculation section, you need to edit R_Tk and BCoeff with the first and second value we took from the calculator respectively. (R_Tk is R(25°C)=[ ]Ω and BCoeff isβ=[ ]K). If they happen to be whole numbers, still use the decimal number! (write x.0)
     ``` c++
     //variables for the thermistor resistance calculation
