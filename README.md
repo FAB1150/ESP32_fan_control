@@ -131,7 +131,7 @@ My ESP32 reads consistently about 0.1V too low, until it gets to 2.7V where it s
   * Remove the thermistor cable from pin 25 (or your thermistor pin if you're not using the default configuration), and connect your voltage source to the pin
   * Open the serial monitor, and start looking at the second value, which is the voltage reading
   * You're gonna end up with a lot of numbers, to make life easier you can use excel or an equivalent program.
-  * Set a voltage between 0.0 and 3.3V, measuer it with a multimeter, write it down and read the votlage in the serial monitor. Note it down too.
+  * Set a voltage between 0.0 and 3.3V, measure it with a multimeter, write it down and read the votlage in the serial monitor. Note it down too.
   * Set a different voltage, and repeat the process.
   * Ideally you want to sweep all the voltage range from 0 to 3.3V, but that takes time. The values we care about are approximately between 0.5V and 2-2.5V
   * You will end up with something like this, from there you can easily see the difference between the readings and the actual voltage. You can take the most common value, or the average, and use that as the offset!
